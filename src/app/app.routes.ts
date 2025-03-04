@@ -14,7 +14,7 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'microfrontend',
+    path: 'clients',
     component: DashboardLayoutComponent,
     children: [
       {
