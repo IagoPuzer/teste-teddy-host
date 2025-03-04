@@ -1,0 +1,29 @@
+/* Navbar - Estilo base */
+.navbar {
+  background-color: #f8f9fa;
+}
+
+/* Links centralizados */
+.navbar-nav {
+  display: flex;
+  justify-content: center; /* Centraliza os links */
+  width: 100%;
+}
+
+/* Cor ativa do link */
+.nav-link.active {
+  color: #007bff !important;
+  font-weight: bold;
+}
+
+/* Cor normal dos links */
+.nav-link {
+  color: #495057;
+}
+
+/* Nome do usuário à direita */
+.navbar-text {
+  font-size: 1.1rem;
+  color: #495057;
+  margin-left: 20px;
+}
