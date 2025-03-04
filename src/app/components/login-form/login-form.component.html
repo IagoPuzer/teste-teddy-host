@@ -1,0 +1,18 @@
+<div class="container d-flex flex-column align-items-center">
+  <h1 class="fs-4">Olá, Seja Bem-vindo</h1>
+
+  <input
+    type="text"
+    class="form-control mt-3 custom-width"
+    placeholder="Digite seu nome"
+    [formControl]="name"
+  >
+
+  @if (name.invalid && name.touched) {
+    <div class="text-danger">Nome é obrigatório!</div>
+  }
+
+  <button (click)="logName()" class="btn btn-primary custom-width custom-button mt-3">
+    Entrar
+  </button>
+</div>

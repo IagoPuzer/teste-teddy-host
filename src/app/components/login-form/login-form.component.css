@@ -1,0 +1,20 @@
+.custom-width {
+  width: 21.8rem;
+}
+
+.custom-button {
+  background-color: #ec6724;
+  border: none;
+  font-size: large;
+  font-family: Inter;
+}
+
+.custom-button:hover {
+  background-color: #d55a1f;
+}
+
+@media (min-width: 768px) {
+  .custom-width {
+    width: 37.5rem;
+  }
+}
