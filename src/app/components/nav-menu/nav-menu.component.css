@@ -8,22 +8,161 @@
   display: flex;
   justify-content: center; /* Centraliza os links */
   width: 100%;
+  padding-top: 3rem; /* Ajuste conforme necessário */
 }
 
 /* Cor ativa do link */
 .nav-link.active {
-  color: #007bff !important;
-  font-weight: bold;
+  color: #ec6724 !important;
+  border-bottom: 0.063rem solid #ec6724;
 }
 
 /* Cor normal dos links */
 .nav-link {
-  color: #495057;
+  font-size: 1.25rem; /* Ajuste conforme necessário */
+  color: #000; /* Ajuste conforme necessário */
+}
+
+.nav-link:hover {
+  color: #ec6724;
 }
 
 /* Nome do usuário à direita */
 .navbar-text {
   font-size: 1.1rem;
   color: #495057;
-  margin-left: 20px;
+  margin-left: 1.25rem;
+}
+
+.navbar-toggler {
+  margin-left: auto;
+}
+
+.collapse {
+  display: none;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1050;
+  opacity: 0;
+}
+
+.collapse.show {
+  display: block;
+  max-height: 500px;
+  opacity: 1;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 1050;
+  transition: right 0.3s ease-out;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+.menu.show {
+  right: 0;
+}
+
+.close-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.menu-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+}
+
+.menu-mask.show {
+  display: block;
+  opacity: 1;
+}
+
+.nav-item {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+  .navbar-text {
+    display: none;
+  }
+
+  .navbar-nav {
+    text-align: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .menu {
+    position: static;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    overflow: visible;
+    transition: none;
+  }
+
+  .menu.show {
+    right: auto;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .nav-item {
+    margin-bottom: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .close-menu {
+    display: none;
+  }
+
+  .menu-mask {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-nav {
+    text-align: left;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 0.5rem 0;
+  }
+
+  .navbar-toggler {
+    margin-left: 0;
+  }
 }

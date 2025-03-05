@@ -1,18 +1,19 @@
 import { Component, Input, SimpleChanges, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { UserStateService } from '../../services/user-state.service'; // Importe o serviço
+import { UserStateService } from '../../services/user-state.service';
 
 @Component({
   selector: 'app-nav-menu',
   standalone: true,
-  imports: [RouterModule, CommonModule], // Certifique-se de importar o RouterModule
+  imports: [RouterModule, CommonModule],
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css'],
 })
 export class NavMenuComponent implements OnInit {
-  currentRoute: string = ''; // Rota atual
+  currentRoute: string = '';
   userName: string = '';
+  isMenuOpen = false;
 
   constructor(
     private router: Router,
@@ -22,11 +23,16 @@ export class NavMenuComponent implements OnInit {
     this.router.events.subscribe(() => {
       this.currentRoute = this.router.url;
     });
+    this.currentRoute = this.router.url;
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   ngOnInit() {
     this.userStateService.userName$.subscribe((name) => {
-      this.userName = name; // Atualiza o nome do usuário
+      this.userName = name;
     });
   }
 }

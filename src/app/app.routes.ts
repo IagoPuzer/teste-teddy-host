@@ -22,7 +22,6 @@ export const routes: Routes = [
         loadComponent: () =>
           loadRemoteModule('mfe1', './Component').then((m) => m.HomeComponent),
       },
-      // outras rotas para o layout de dashboard
     ],
   },
 ];

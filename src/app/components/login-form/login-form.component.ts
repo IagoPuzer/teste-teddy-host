@@ -14,9 +14,9 @@ export class LoginFormComponent {
 
   @Output() login = new EventEmitter<string>();
 
-  constructor(private userStateService: UserStateService) {} // Injetando o serviço
+  constructor(private userStateService: UserStateService) {}
 
-  logName() {
+  submitLogin() {
     if (this.name.invalid) {
       this.name.markAsTouched();
       return;
