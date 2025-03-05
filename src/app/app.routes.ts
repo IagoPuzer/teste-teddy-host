@@ -8,10 +8,7 @@ export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    children: [
-      { path: '', component: HomeComponent },
-      // outras rotas para o layout principal
-    ],
+    children: [{ path: '', component: HomeComponent }],
   },
   {
     path: 'clients',
