@@ -17,7 +17,20 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          loadRemoteModule('mfe1', './Component').then((m) => m.HomeComponent),
+          loadRemoteModule('mfe1', './Clients').then((m) => m.ClientsComponent),
+      },
+    ],
+  },
+  {
+    path: 'selectedclients',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          loadRemoteModule('mfe1', './SelectedClients').then(
+            (m) => m.SelectedClientsComponent
+          ),
       },
     ],
   },
