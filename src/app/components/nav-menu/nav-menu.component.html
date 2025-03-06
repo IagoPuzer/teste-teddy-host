@@ -16,7 +16,7 @@
 
       @if (isMenuOpen) {
         <p class="menu-user-text" >
-          Olá, <span class="text-bold fs-4">{{ userName }}</span>
+          Olá, <span class="fw-bold fs-4">{{ userName }}</span>
           </p>
       }
 
@@ -45,7 +45,7 @@
       </ul>
     </div>
     <span class="navbar-text d-none d-lg-inline">
-      Olá, <span class="text-bold fs-4">{{ userName }}</span>
+      Olá, <span class="fw-bold fs-4">{{ userName }}</span>
     </span>
   </div>
   <div class="menu-mask" [ngClass]="{'show': isMenuOpen}" (click)="toggleMenu()"></div>
