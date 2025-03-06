@@ -1,7 +1,7 @@
 import { Component, Input, SimpleChanges, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { UserStateService } from '../../services/user-state.service';
+import { UserStateService } from '../../states/user-state.service';
 
 @Component({
   selector: 'app-nav-menu',

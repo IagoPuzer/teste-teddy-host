@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { UserStateService } from '../../services/user-state.service';
+import { UserStateService } from '../../states/user-state.service';
 
 @Component({
   selector: 'app-login-form',
