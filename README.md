@@ -1,69 +1,80 @@
-# Host - Arquitetura de Microfrontend
+# 🏠 Host - Microfrontend
 
-Este repositório serve como **host** para uma arquitetura de **microfrontend**, fornecendo os **layouts das aplicações** e a **página inicial de login**.
+Este repositório serve como **host** para uma arquitetura de microfrontends. Ele é responsável por carregar dinamicamente os microfrontends e inclui **os layouts das aplicações e a página inicial de login**.
 
-## 🛠️ Tecnologias Utilizadas
+## 📦 Instalação
 
-- **Angular** para o host e integração dos microfrontends
-- **Module Federation** para a composição dinâmica dos microfrontends
-- **Webpack 5** para gerenciamento dos módulos remotos
-- **Docker** para facilitar a execução e implantação da aplicação
+Antes de rodar o projeto, instale as dependências:
+
+```bash
+npm install
+```
 
 ## 🚀 Executando o Servidor de Desenvolvimento
 
-Para iniciar o servidor de desenvolvimento local, execute:
+Para iniciar o servidor localmente, execute:
 
 ```bash
 ng serve
 ```
 
-Uma vez iniciado, acesse a aplicação pelo navegador:
+Depois, acesse no navegador:
 
 🔗 [http://localhost:4200/](http://localhost:4200/)
 
-A aplicação **será recarregada automaticamente** sempre que houver modificações nos arquivos de origem.
+A aplicação será recarregada automaticamente sempre que houver modificações no código-fonte.
 
-## 🐳 Executando com Docker
+## ⚙️ Configuração do `federation.manifest.json`
 
-A aplicação está **dockerizada**, permitindo fácil execução sem necessidade de configurar dependências localmente.
+Para rodar corretamente o microfrontend localmente, **modifique** o arquivo `federation.manifest.json`, localizado na pasta `public`.
 
-Para rodar a aplicação com Docker, execute:
-
-```bash
-docker compose up --build
-```
-
-Isso criará e iniciará o container com a aplicação rodando.
-
-Caso queira parar os containers, utilize:
-
-```bash
-docker compose down
-```
-
-## 🔧 Configuração para Desenvolvimento Local
-
-Antes de rodar a aplicação localmente, é necessário modificar a rota no arquivo `federation.manifest.json`, localizado na pasta `public`.
-
-Edite o arquivo para que contenha a seguinte configuração:
+Altere a rota para o ambiente local:
 
 ```json
 {
-  "remoteEntry": "http://localhost:4202/remoteEntry.json"
+  "mfe1": "http://localhost:4202/remoteEntry.json"
 }
 ```
 
-## 🏗️ Executando o Microfrontend
+⚠️ **Importante:** **Não commite este arquivo!**
 
-Para que o host funcione corretamente em ambiente local, é necessário rodar também o projeto do **microfrontend**, disponível no seguinte repositório:
+No ambiente de produção, o arquivo `federation.manifest.json` deve conter a URL do microfrontend hospedado na Vercel:
+
+```json
+{
+  "mfe1": "https://teste-teddy-microfrontend-clients.vercel.app/remoteEntry.json"
+}
+```
+
+Se este arquivo for commitado com a configuração local, o **deploy na Vercel pode ser comprometido**.
+
+## 🐳 Executando com Docker
+
+A aplicação está **dockerizada**, permitindo a execução de forma isolada.
+
+### Criando e executando o container
+
+```bash
+docker-compose up --build
+```
+
+### Parando os containers
+
+```bash
+docker-compose down
+```
+
+## 🔗 Integração com o Microfrontend
+
+Para o host carregar corretamente o microfrontend, o repositório do **microfrontend clients** deve estar rodando simultaneamente.
 
 🔗 [https://github.com/IagoPuzer/teste-teddy-microfrontend-clients](https://github.com/IagoPuzer/teste-teddy-microfrontend-clients)
 
-Certifique-se de que o microfrontend está em execução antes de iniciar o host.
+Caso o microfrontend não esteja rodando, a aplicação host pode falhar ao carregar os componentes remotos.
 
 ## 📝 Notas Importantes
 
-- O host **não contém lógica de negócio**, apenas layouts e a estrutura base para os microfrontends.
-- Certifique-se de que as configurações de rede permitem comunicação entre o host e os microfrontends.
-- Se houver problemas de carregamento do microfrontend, verifique se o caminho de `remoteEntry` está correto e se o servidor do microfrontend está rodando.
-- Ao rodar a aplicação com **Docker**, garanta que as portas configuradas nos containers não estejam em uso por outros serviços.
+- **Não commite o arquivo `federation.manifest.json` com a configuração local.**
+- O microfrontend precisa estar rodando para que o host carregue corretamente.
+- Se houver problemas no carregamento, verifique se os serviços do host e do microfrontend estão rodando corretamente.
+- Caso utilize **Docker**, garanta que as configurações de rede permitam a comunicação entre os containers.
