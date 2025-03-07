@@ -12,7 +12,11 @@
 			"architect": {
 				"build": {
 					"builder": "@angular-architects/native-federation:build",
-					"options": {},
+          "options": {
+            "styles": [
+              "@ngxpert/hot-toast/styles.css"
+            ]
+          },
 					"configurations": {
 						"production": {
 							"target": "host:esbuild:production"
@@ -51,8 +55,9 @@
 							}
 						],
 						"styles": [
-							"src/styles.css"
-						],
+              "@ngxpert/hot-toast/styles.css",
+              "src/styles.css"
+            ],
 						"scripts": []
 					}
 				},
@@ -75,7 +80,8 @@
 						],
 						"styles": [
 							"src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@ngxpert/hot-toast/src/styles/styles.css"
 						],
 						"scripts": []
 					},
