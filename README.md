@@ -48,11 +48,11 @@ No ambiente de produção, o arquivo `federation.manifest.json` deve conter a UR
 
 Se este arquivo for commitado com a configuração local, o **deploy na Vercel pode ser comprometido**.
 
-**OBS**: Apesar de não apresentar nenhum erro aparante não é possivel acessar as rotas pelo docker, o Docker Container é criado normalmente porém não esta sendo feito o expose da imagem.
-
 ## 🐳 Executando com Docker
 
 A aplicação está **dockerizada**, permitindo a execução de forma isolada.
+
+**OBS**: Apesar de não apresentar nenhum erro aparante não é possivel acessar as rotas pelo docker, o Docker Container é criado normalmente porém não esta sendo feito o expose da imagem.
 
 ### Criando e executando o container
 
