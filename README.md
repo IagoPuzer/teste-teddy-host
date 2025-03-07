@@ -1,59 +1,69 @@
-# Host
+# Host - Arquitetura de Microfrontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+Este repositório serve como **host** para uma arquitetura de **microfrontend**, fornecendo os **layouts das aplicações** e a **página inicial de login**.
 
-## Development server
+## 🛠️ Tecnologias Utilizadas
 
-To start a local development server, run:
+- **Angular** para o host e integração dos microfrontends
+- **Module Federation** para a composição dinâmica dos microfrontends
+- **Webpack 5** para gerenciamento dos módulos remotos
+- **Docker** para facilitar a execução e implantação da aplicação
+
+## 🚀 Executando o Servidor de Desenvolvimento
+
+Para iniciar o servidor de desenvolvimento local, execute:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Uma vez iniciado, acesse a aplicação pelo navegador:
 
-## Code scaffolding
+🔗 [http://localhost:4200/](http://localhost:4200/)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+A aplicação **será recarregada automaticamente** sempre que houver modificações nos arquivos de origem.
 
-```bash
-ng generate component component-name
-```
+## 🐳 Executando com Docker
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+A aplicação está **dockerizada**, permitindo fácil execução sem necessidade de configurar dependências localmente.
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Para rodar a aplicação com Docker, execute:
 
 ```bash
-ng build
+docker compose up --build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Isso criará e iniciará o container com a aplicação rodando.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Caso queira parar os containers, utilize:
 
 ```bash
-ng test
+docker compose down
 ```
 
-## Running end-to-end tests
+## 🔧 Configuração para Desenvolvimento Local
 
-For end-to-end (e2e) testing, run:
+Antes de rodar a aplicação localmente, é necessário modificar a rota no arquivo `federation.manifest.json`, localizado na pasta `public`.
 
-```bash
-ng e2e
+Edite o arquivo para que contenha a seguinte configuração:
+
+```json
+{
+  "remoteEntry": "http://localhost:4202/remoteEntry.json"
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🏗️ Executando o Microfrontend
 
-## Additional Resources
+Para que o host funcione corretamente em ambiente local, é necessário rodar também o projeto do **microfrontend**, disponível no seguinte repositório:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+🔗 [https://github.com/IagoPuzer/teste-teddy-microfrontend-clients](https://github.com/IagoPuzer/teste-teddy-microfrontend-clients)
+
+Certifique-se de que o microfrontend está em execução antes de iniciar o host.
+
+## 📝 Notas Importantes
+
+- O host **não contém lógica de negócio**, apenas layouts e a estrutura base para os microfrontends.
+- Certifique-se de que as configurações de rede permitem comunicação entre o host e os microfrontends.
+- Se houver problemas de carregamento do microfrontend, verifique se o caminho de `remoteEntry` está correto e se o servidor do microfrontend está rodando.
+- Ao rodar a aplicação com **Docker**, garanta que as portas configuradas nos containers não estejam em uso por outros serviços.
