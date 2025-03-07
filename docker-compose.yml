@@ -3,7 +3,9 @@ services:
     build:
       context: .
     ports:
-      - "4201:4200"
+      - "4200:4200"
     volumes:
       - .:/app
       - /app/node_modules
+    command: >
+      sh -c "ng serve"

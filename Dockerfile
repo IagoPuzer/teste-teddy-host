@@ -8,4 +8,4 @@ RUN npm install
 
 RUN npm install @angular/cli -g
 
-CMD ["npm", "run", "watch"]
+EXPOSE 4200
